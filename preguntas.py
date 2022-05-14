@@ -106,7 +106,6 @@ def pregunta_03():
     print(reg.score(X_fertility, y_life).round(4))
 pregunta_03()
 
-
 def pregunta_04():
     """
     Particionamiento del conjunto de datos usando train_test_split.
@@ -131,24 +130,19 @@ def pregunta_04():
 
     # Divida los datos de entrenamiento y prueba. La semilla del generador de números
     # aleatorios es 53. El tamaño de la muestra de entrenamiento es del 80%
-    (X_train, X_test, y_train, y_test,) = train_test_split(
-        X_fertility,
-        y_life,
-        test_size=0.2,
-        random_state=53,
-    )
+    X_train, X_test, y_train, y_test= train_test_split(X_fertility, y_life,test_size=0.2, random_state=53)
 
     # Cree una instancia del modelo de regresión lineal
     linearRegression = LinearRegression()
 
     # Entrene el clasificador usando X_train y y_train
-    LinearRegression.fit(X_train, y_train)
+    linearRegression.fit(X_train, y_train)
 
     # Pronostique y_test usando X_test
-    y_pred = LinearRegression.predict(X_test)
+    y_pred = linearRegression.predict(X_test)
 
     # Compute and print R^2 and RMSE
     print("R^2: {:6.4f}".format(linearRegression.score(X_test, y_test)))
     rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     print("Root Mean Squared Error: {:6.4f}".format(rmse))
-pregunta_04
+pregunta_04()
